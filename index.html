@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Press to Play</title>
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f0f0f0;
+      font-family: Arial, sans-serif;
+    }
+
+    #playButton {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      padding: 15px 30px;
+      font-size: 20px;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    #playButton:hover {
+      background-color: #45a049;
+    }
+
+    video {
+      display: none; /* Hidden until button is pressed */
+      margin-top: 20px;
+      max-width: 100%;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Meslek Kimlere Kalmış</h1>
+  <button id="playButton">Bu dalyarakla da aynı mesleği yapacağız ha!!</button>
+
+  <video id="myVideo" controls>
+    <source src="C:\Users\Ege\Downloads\Utanacağınızı bilsem yüzünüze tükürmek isterdim ama....mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+
+  <script>
+    const button = document.getElementById('playButton');
+    const video = document.getElementById('myVideo');
+
+    button.addEventListener('click', () => {
+      video.style.display = 'block'; // Show video
+      video.play(); // Start playing the video
+      button.style.display = 'none'; // Hide the button
+    });
+  </script>
+
+</body>
+</html>
