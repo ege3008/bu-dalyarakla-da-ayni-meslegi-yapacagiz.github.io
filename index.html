@@ -1,62 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Press to Play</title>
-  <style>
-    body {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      margin: 0;
-      background-color: #f0f0f0;
-      font-family: Arial, sans-serif;
-    }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Press to Play</title>
+    <style>
+      body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background-color: #f0f0f0;
+        font-family: Arial, sans-serif;
+      }
 
-    #playButton {
-      background-color: #4CAF50;
-      color: white;
-      border: none;
-      padding: 15px 30px;
-      font-size: 20px;
-      cursor: pointer;
-      border-radius: 5px;
-    }
+      #playButton {
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        padding: 15px 30px;
+        font-size: 20px;
+        cursor: pointer;
+        border-radius: 5px;
+      }
 
-    #playButton:hover {
-      background-color: #45a049;
-    }
+      #playButton:hover {
+        background-color: #45a049;
+      }
 
-    video {
-      display: none; /* Hidden until button is pressed */
-      margin-top: 20px;
-      max-width: 100%;
-    }
-  </style>
-</head>
-<body>
+      video {
+        display: none; /* Hidden until button is pressed */
+        margin-top: 20px;
+        max-width: 100%;
+        margin-bottom: 20px;
+        pointer-events: none;
+      }
 
-  <h1>Meslek Kimlere Kalmış</h1>
-  <button id="playButton">Bu dalyarakla da aynı mesleği yapacağız ha!!</button>
+      #tekrar {
+        background-color: #b32828;
+        color: white;
+        border: none;
+        padding: 15px 30px;
+        font-size: 20px;
+        cursor: pointer;
+        border-radius: 5px;
+        transition: display 5s;
+      }
+      #tekrar:hover {
+        background-color: crimson;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Meslek Kimlere Kalmış</h1>
+    <button id="playButton">
+      Bu dalyarakla da aynı mesleği yapacağız ha!!
+    </button>
 
-  <video id="myVideo" controls>
-    <source src="video.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-  </video>
+    <video id="myVideo" controls>
+      <source src="video.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
 
-  <script>
-    const button = document.getElementById('playButton');
-    const video = document.getElementById('myVideo');
+    <button id="tekrar" style="display: none">hızımı alamadım</button>
 
-    button.addEventListener('click', () => {
-      video.style.display = 'block'; // Show video
-      video.play(); // Start playing the video
-      button.style.display = 'none'; // Hide the button
-    });
-  </script>
+    <script>
+      const button = document.getElementById("playButton");
+      const video = document.getElementById("myVideo");
+      const tekrar = document.getElementById("tekrar");
 
-</body>
+      button.addEventListener("click", () => {
+        video.style.display = "block"; // Show video
+        video.play(); // Start playing the video
+        button.style.display = "none"; // Hide the button
+      });
+      video.addEventListener("ended", () => {
+        tekrar.style.display = "block";
+      });
+      tekrar.addEventListener("click", () => {
+        location.reload();
+      });
+    </script>
+  </body>
 </html>
